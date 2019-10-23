@@ -1,0 +1,38 @@
+<!doctype html>
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<script type="text/javascript" src="drawing.js"></script>
+		<link rel="stylesheet" type="text/css" href="../styles.css">
+		<title>Demonstration of drawing Pacman</title>
+	</head>
+	
+	<body>
+		<canvas id = "pacman" height="400" width="400"></canvas>
+
+		<script type="text/javascript">
+			var canvas = document.getElementById("pacman");
+			var context = canvas.getContext('2d');
+			draw_grid(context, 15, 45, 'red', 'yellow');
+			// context.beginPath();
+			// context.arc(200, 200, 150, 0.2*Math.PI, 1.8*Math.PI) // From book: The context.arc method can optionally take a final Boolean parameter for drawing counterclockwise. This can be convenient when using arcs in more complicated paths.
+			// context.lineTo(200, 200);
+			// context.fillStyle = "yellow"; // Fills up the entire arc as yellow with a set of boundaries
+			// context.fill();
+			// draw_pacman(context, 200, 200, 150, Math.random());
+			var min_radius = 5;
+			var max_radius = 50;
+			do{
+				let x = context.canvas.width*Math.random();
+				let y = context.canvas.height*Math.random();
+				let radius = min_radius + (max_radius - min_radius)*Math.random();
+				draw_pacman(context, x, y, radius, getRandom(0, 0.5));
+			}while(Math.random() < 0.9)
+
+
+
+		</script>
+	</body>
+
+</html>
