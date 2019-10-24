@@ -1,0 +1,18 @@
+<!doctype html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Drawing a Spaceship</title>
+		<link rel="stylesheet" type="text/css" href="styles.css">
+		<script src = "drawing.js"></script>
+	</head>
+	<body>
+		<h1>Drawing a spaceship</h1>
+		<canvas id = "asteroids" width="400" height="400"></canvas>
+		<script type="text/javascript">
+			var context = document.getElementById('asteroids').getContext('2d'); // These changes can be made to previous example too
+			draw_grid(context, 15, 45, 'red', 'yellow');
+			draw_ship(context, 200, 200, 150, {guide: true}); //x and y coordinates then radius and finally a object with options({})to mention several parameters.
+		</script>
+	</body>
+</html>
