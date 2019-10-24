@@ -13,6 +13,9 @@
 			var context = document.getElementById('asteroids').getContext('2d'); // These changes can be made to previous example too
 			draw_grid(context, 15, 45, 'red', 'yellow');
 			draw_ship(context, 200, 200, 150, {guide: true}); //x and y coordinates then radius and finally a object with options({})to mention several parameters.
+			draw_ship(context, 75, 75, 50, {angle: 0.8*Math.PI, guide: true});
+			draw_ship(context, 75, 325, 50, {angle: 0.3*Math.PI, guide: true});
+			draw_ship(context, 325, 75, 50, {lineWidth: 8, fill: 'blue'});
 		</script>
 	</body>
 </html>
