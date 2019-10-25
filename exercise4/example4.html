@@ -27,14 +27,32 @@
 			// 	context.stroke();
 			// 	context.restore();
 			// }
-			let t = context.canvas.width / 20; 
-			let r = Math.PI / 500; 
-			context.translate(0, t);
-			for(let i = 0; i <= 50; i ++) {
-				context.rotate(i * r);
-				draw_ship(context, t, {guide: true, lineWidth: 1}); 
-				context.translate(t, 0);
+			
+			// Spiral example
+			// let t = context.canvas.width / 20; 
+			// let r = Math.PI / 500; 
+			// context.translate(0, t);
+			// for(let i = 0; i <= 50; i ++) {
+			// 	context.rotate(i * r);
+			// 	draw_ship(context, t, {guide: true, lineWidth: 1}); 
+			// 	context.translate(t, 0);
+			// 	// context.restore();
+			// }
+
+			// Controlled ship drawing using canvas transformation
+			let x, y, angle = 0;
+			let w = context.canvas.width, h = context.canvas.height;
+			for(y = h/20; y < h; y += h/10){
+				for(x = w/20; x< w; x += w/10){
+					context.save()
+					context.translate(x, y);
+					context.rotate(angle);
+					draw_ship(context, w/30, {guide: true, lineWidth: 1});
+					context.restore();
+					angle = (angle + 0.0075*Math.PI);
+				}
 			}
+
 		</script>
 	</body>
 </html>
