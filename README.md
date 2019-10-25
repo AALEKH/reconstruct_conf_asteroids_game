@@ -11,3 +11,4 @@ This is an attempt to restart my development journey that I haven't worked on fo
 * Interesting point about quadraticCurveTo function is mentioned here: https://www.w3schools.com/tags/canvas_quadraticcurveto.asp
 * Bit of trignometry here when building spaceship we'll consider them to be kind of circular so asteroid to spaceship collision will be circle to circle circumference collision; further using radius "r" angle (theta) as x = r*cos(theta) and y = r*sin(theta).
 * Using above mentioned point we'll want to create our ship to fill as a circle as completely as possible.
+* Learned more about canvas.translate here: https://www.w3schools.com/tags/canvas_translate.asp and combining it with context.rotate gave us spiral shape.

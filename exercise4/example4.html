@@ -11,11 +11,30 @@
 		<canvas id = "asteroids" width="400" height="400"></canvas>
 		<script type="text/javascript">
 			var context = document.getElementById('asteroids').getContext('2d'); // These changes can be made to previous example too
+			context.lineWidth = 0.5;
+			context.strokeStyle = "white";
+			let x = context.canvas.width*0.9;
+			let y = 0;
+			let radius = context.canvas.width*0.1
 			draw_grid(context, 15, 45, 'red', 'yellow');
-			draw_ship(context, 200, 200, 150, {guide: true}); //x and y coordinates then radius and finally a object with options({})to mention several parameters.
-			draw_ship(context, 75, 75, 50, {angle: 0.8*Math.PI, guide: true});
-			draw_ship(context, 75, 325, 50, {angle: 0.3*Math.PI, guide: true});
-			draw_ship(context, 325, 75, 50, {lineWidth: 8, fill: 'blue'});
+			// for(let r=0; r <= 0.5*Math.PI; r +=0.05*Math.PI ){
+			// 	context.save();
+			// 	context.rotate(r);
+			// 	draw_ship(context, x, y, radius, {guide: true});
+			// 	context.beginPath();
+			// 	context.moveTo(0, 0);
+			// 	context.lineTo(x, 0);
+			// 	context.stroke();
+			// 	context.restore();
+			// }
+			let t = context.canvas.width / 20; 
+			let r = Math.PI / 500; 
+			context.translate(0, t);
+			for(let i = 0; i <= 50; i ++) {
+				context.rotate(i * r);
+				draw_ship(context, t, {guide: true, lineWidth: 1}); 
+				context.translate(t, 0);
+			}
 		</script>
 	</body>
 </html>

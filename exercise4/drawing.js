@@ -27,31 +27,61 @@ var draw_grid = function(ctx, minor, major, stroke, fill){
 
 }
 
-var draw_ship = function(ctx, x, y, radius, options){
+// var draw_ship = function(ctx, x, y, radius, options){
+// 	options = options || {};
+// 	ctx.save();
+// 	// if options.guide is true then it will show collision radius
+// 	if(options.guide){
+// 		ctx.strokeStyle = "white";
+// 		ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
+// 		ctx.lineWidth = 0.5;
+// 		ctx.beginPath();
+// 		ctx.arc(x, y, radius, 0, 2*Math.PI);
+// 		ctx.stroke();
+// 		ctx.fill();
+// 	}
+// 	// sertting some default values
+// 	ctx.lineWidth = options.lineWidth || 2;
+// 	ctx.strokeStyle = options.stroke || "white";
+// 	ctx.fillStyle = options.fill || "black";
+// 	let angle = (options.angle || 0.5*Math.PI)/2;
+// 	// ship construction code
+// 	ctx.beginPath();
+// 	ctx.moveTo(x+radius, y);
+// 	ctx.lineTo(x + Math.cos(Math.PI - angle)*radius, y + Math.sin(Math.PI - angle)*radius);
+// 	ctx.lineTo(x + Math.cos(Math.PI + angle)*radius, y + Math.sin(Math.PI + angle)*radius);
+// 	ctx.closePath();
+// 	ctx.fill();
+// 	ctx.stroke();
+// 	ctx.restore();
+// }
+
+var draw_ship = function(ctx, radius, options){
 	options = options || {};
 	ctx.save();
-	// if options.guide is true then it will show collision radius
-	if(options.guide){
+	if(options.guide) {
 		ctx.strokeStyle = "white";
 		ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
 		ctx.lineWidth = 0.5;
 		ctx.beginPath();
-		ctx.arc(x, y, radius, 0, 2*Math.PI);
+		ctx.arc(0, 0, radius, 0, 2*Math.PI);
 		ctx.stroke();
 		ctx.fill();
 	}
-	// sertting some default values
 	ctx.lineWidth = options.lineWidth || 2;
 	ctx.strokeStyle = options.stroke || "white";
 	ctx.fillStyle = options.fill || "black";
 	let angle = (options.angle || 0.5*Math.PI)/2;
-	// ship construction code
 	ctx.beginPath();
-	ctx.moveTo(x+radius, y);
-	ctx.lineTo(x + Math.cos(Math.PI - angle)*radius, y + Math.sin(Math.PI - angle)*radius);
-	ctx.lineTo(x + Math.cos(Math.PI + angle)*radius, y + Math.sin(Math.PI + angle)*radius);
+	ctx.moveTo(radius, 0);
+	ctx.lineTo(Math.cos(Math.PI - angle)*radius, Math.sin(Math.PI - angle)*radius);
+	ctx.lineTo(Math.cos(Math.PI + angle)*radius, Math.sin(Math.PI + angle)*radius);
 	ctx.closePath();
 	ctx.fill();
 	ctx.stroke();
 	ctx.restore();
 }
+
+
+
+
