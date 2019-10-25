@@ -13,8 +13,8 @@
 			var context = document.getElementById('asteroids').getContext('2d'); // These changes can be made to previous example too
 			context.lineWidth = 0.5;
 			context.strokeStyle = "white";
-			let x = context.canvas.width*0.9;
-			let y = 0;
+			// let x = context.canvas.width*0.9;
+			// let y = 0;
 			let radius = context.canvas.width*0.1
 			draw_grid(context, 15, 45, 'red', 'yellow');
 			// for(let r=0; r <= 0.5*Math.PI; r +=0.05*Math.PI ){
@@ -40,18 +40,21 @@
 			// }
 
 			// Controlled ship drawing using canvas transformation
-			let x, y, angle = 0;
-			let w = context.canvas.width, h = context.canvas.height;
-			for(y = h/20; y < h; y += h/10){
-				for(x = w/20; x< w; x += w/10){
-					context.save()
-					context.translate(x, y);
-					context.rotate(angle);
-					draw_ship(context, w/30, {guide: true, lineWidth: 1});
-					context.restore();
-					angle = (angle + 0.0075*Math.PI);
-				}
-			}
+			// let x, y, angle = 0;
+			// let w = context.canvas.width, h = context.canvas.height;
+			// for(y = h/20; y < h; y += h/10){
+			// 	for(x = w/20; x< w; x += w/10){
+			// 		context.save()
+			// 		context.translate(x, y);
+			// 		context.rotate(angle);
+			// 		draw_ship(context, w/30, {guide: true, lineWidth: 1});
+			// 		context.restore();
+			// 		angle = (angle + 0.0075*Math.PI);
+			// 	}
+			// }
+			/// Initial rare bend
+			context.translate(200, 200);
+			draw_ship(context, 150, {curve: Math.random(), guide: true});
 
 		</script>
 	</body>

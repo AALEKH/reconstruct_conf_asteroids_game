@@ -56,31 +56,79 @@ var draw_grid = function(ctx, minor, major, stroke, fill){
 // 	ctx.restore();
 // }
 
+// Controlled ship drawing using canvas transformations
+// var draw_ship = function(ctx, radius, options){
+// 	options = options || {};
+// 	ctx.save();
+// 	if(options.guide) {
+// 		ctx.strokeStyle = "white";
+// 		ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
+// 		ctx.lineWidth = 0.5;
+// 		ctx.beginPath();
+// 		ctx.arc(0, 0, radius, 0, 2*Math.PI);
+// 		ctx.stroke();
+// 		ctx.fill();
+// 	}
+// 	ctx.lineWidth = options.lineWidth || 2;
+// 	ctx.strokeStyle = options.stroke || "white";
+// 	ctx.fillStyle = options.fill || "black";
+// 	let angle = (options.angle || 0.5*Math.PI)/2;
+// 	ctx.beginPath();
+// 	ctx.moveTo(radius, 0);
+// 	ctx.lineTo(Math.cos(Math.PI - angle)*radius, Math.sin(Math.PI - angle)*radius);
+// 	ctx.lineTo(Math.cos(Math.PI + angle)*radius, Math.sin(Math.PI + angle)*radius);
+// 	ctx.closePath();
+// 	ctx.fill();
+// 	ctx.stroke();
+// 	ctx.restore();
+// }
+
+// Creating rear using Quadratic Curve
 var draw_ship = function(ctx, radius, options){
 	options = options || {};
+	let angle = (options.angle || 0.5*Math.PI)/2;
+	let curve = options.curve || 0.5;
 	ctx.save();
-	if(options.guide) {
+	if(options.guide){
 		ctx.strokeStyle = "white";
-		ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
+		ctx.fillStyle = "rgba(0,0,0,0.25)";
 		ctx.lineWidth = 0.5;
 		ctx.beginPath();
-		ctx.arc(0, 0, radius, 0, 2*Math.PI);
+		ctx.arc(0, 0, radius, 0, 2*Math.PI)
 		ctx.stroke();
 		ctx.fill();
 	}
 	ctx.lineWidth = options.lineWidth || 2;
 	ctx.strokeStyle = options.stroke || "white";
-	ctx.fillStyle = options.fill || "black";
-	let angle = (options.angle || 0.5*Math.PI)/2;
+	ctx.fillStyle = options.fill || "yellow";
 	ctx.beginPath();
-	ctx.moveTo(radius, 0);
-	ctx.lineTo(Math.cos(Math.PI - angle)*radius, Math.sin(Math.PI - angle)*radius);
-	ctx.lineTo(Math.cos(Math.PI + angle)*radius, Math.sin(Math.PI + angle)*radius);
+	// ctx.moveTo(radius, 0);
+	// ctx.lineTo(Math.cos(Math.PI-angle)*radius, Math.sin(Math.PI-angle)*radius);
+	// ctx.quadraticCurveTo(radius*curve-radius, 0, Math.cos(Math.PI+angle)*radius, Math.sin(Math.PI+angle)*radius);
+	// ctx.fillStyle = "orange";
+	// ctx.strokeStyle = "black";
+	ctx.fillText("Origin", 0, 0);
+	ctx.strokeStyle = "black";
+	// ctx.fillText("Control Point", radius*curve-radius, 0);
 	ctx.closePath();
 	ctx.fill();
 	ctx.stroke();
+	if(options.guide){
+		ctx.strokeStyle = "white";
+		ctx.lineWidth = 0.5;
+		ctx.beginPath();
+		ctx.strokeStyle = "black";
+		ctx.moveTo(-radius, 0);
+		// ctx.fillText("Move to", 0, 0);
+		ctx.lineTo(0,0);
+		ctx.stroke();
+		ctx.beginPath();
+		ctx.arc(radius*curve - radius, 0, radius/50, 0, 2*Math.PI);
+		ctx.stroke();
+	}
 	ctx.restore();
 }
+
 
 
 
